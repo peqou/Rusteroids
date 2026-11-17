@@ -1,154 +1,137 @@
 # Rusteroids ☄️
 
-**An ASCII-ish space shooter, an onboard computer having a questionable day, and a vibe-coded experiment that got slightly out of hand.**
+**Псевдо-ASCII космический шутер на Rust + Bevy, бортовой компьютер, у которого плохой день, и вайбкодинг-эксперимент, который слегка вышел из-под контроля.**
 
 [Русский](#русский) · [English](#english)
 
 > [!WARNING]
-> **Very early work in progress.** Developed and tested **on Linux only**. **Windows has not been tested** (and neither has macOS). Expect bugs, rough edges, questionable balancing, and occasional decisions made at 3 a.m. This is not a finished game.
+> **Очень ранний WIP.** Разрабатывается и тестируется **только на Linux**. Windows и macOS не проверялись. Ждите багов, кривого баланса и решений, принятых в 3 часа ночи.
+
+<!-- TODO: добавить gif/скриншот геймплея, например docs/preview.gif -->
+<!-- ![preview](docs/preview.gif) -->
 
 ---
 
 ## Русский
 
-### Что это вообще такое?
+### Что это
 
-**Rusteroids** — экспериментальный космический аркадный шутер на **Rust + Bevy** с псевдо-ASCII-визуалом и интерфейсом бортового компьютера.
+**Rusteroids** — личный экспериментальный проект: аркадный шутер от третьего лица с ASCII-постобработкой и кокпитом бортового компьютера (рамка, HUD, осциллограф).
 
-Проект родился из идеи «а что, если просто попробовать сделать игру?» и довольно быстро превратился в «почему я уже настраиваю осциллограф внутри вымышленного космического терминала?». Это **vibecoding ради фана, экспериментов и изучения Rust**, а не серьёзный коммерческий продукт с дорожной картой на 40 кварталов.
-
-**Но.** Есть ненулевая вероятность, что когда-нибудь из этого вырастет полноценная, немного странная инди-игра — с собственным характером, историей и вещами, которые лучше не объяснять в README.
+Сделан **для себя**: попробовать оффлайн-геймдев, учить Rust с помощью ИИ и учиться рисовать — проще учиться, когда есть своя идея. Никакой дорожной карты и дедлайнов. Если когда-нибудь это вырастет в маленькую визуальную новеллу со своим сюжетом, спрайтами и пасхалками — отлично. Если нет — всё равно было весело.
 
 ### Уже есть ✅
 
-- 3D-полёт корабля с управлением на **WASD** и камерой позади него.
-- Постобработка в **ASCII-подобном стиле**: космос выглядит так, будто его выводит старый бортовой компьютер.
-- Кокпит-интерфейс с пиксельной рамкой, HUD и живым **осциллографом**.
-- Волны астероидов, счёт, жизни, пауза, Game Over и перезапуск.
-- Разрушаемые и неразрушаемые астероиды с неровной low-poly-геометрией.
-- Разрушаемым астероидам выдаётся **1–3 HP**; сегментированный индикатор появляется **после попадания**, а не висит над каждым камнем постоянно.
-- Обычная стрельба по одному нажатию, **магазин на 12 зарядов** и перезарядка.
-- Временный **Rapid Fire** power-up с автоматическим огнём.
-- Взрывы, простые эффекты и постепенно усложняющийся аркадный цикл.
-- Экспериментальная система предупреждения о захвате цели — местная космическая служба против стояния на месте.
+- Полёт корабля (**WASD**), камера позади него.
+- ASCII-подобная постобработка и пиксельный кокпит с HUD и осциллографом.
+- Волны астероидов с разными формациями, счёт, жизни, пауза, Game Over, рестарт.
+- Разрушаемые (1–3 HP, полоска появляется после попадания) и неразрушаемые астероиды.
+- Магазин на 12 зарядов, перезарядка, временный **Rapid Fire**.
+- Взрывы и экспериментальный **target lock**: стоять на месте нельзя.
 
-Это список **реализованных механик**, а не обещание, что каждая уже идеально работает.
+### Идеи на потом 🚧
 
-### Что хочется сделать 🚧
-
-| Направление | Идея |
-| --- | --- |
-| **Меню и UX** | Главное меню, настройки, пауза без сюрпризов, нормальные экраны старта и поражения. |
-| **Графика и спрайты** | Собственный пиксель-арт / ASCII-арт, более выразительные корабли, астероиды, враги и эффекты. |
-| **Геймплей** | Новые типы противников, поведение врагов, боссы, дополнительные power-up'ы и более честный баланс. |
-| **Сюжет и лор** | Постепенно собрать мир, в котором странности бортового компьютера имеют причины. Сюжет пока не раскрываю. |
-| **Пасхалки и мемы** | Секреты, абсурдные сообщения терминала, внутренние шутки и отсылки, которые кто-то обязательно найдёт раньше времени. |
-| **ARG** | Возможно, скрытые подсказки, шифры, фальшивые системные записи и история за пределами основного прохождения. **Пока только идея.** |
-| **Звук** | Музыка, звуковые эффекты, сигналы и атмосфера старой электроники. |
-| **Техническая часть** | Рефакторинг, производительность, настройки графики, сохранения, более удобная структура кода и тестирование на других ОС. |
-| **Смысл / мораль** | Попробовать сделать за всей иронией что-то человечное — но без обязательной десятиминутной лекции в конце. |
-
-**Ничего из запланированного не гарантировано.** Это хобби-проект, а не Kickstarter с дедлайнами.
+Меню и настройки · свои спрайты и ASCII-арт · новые враги и боссы · сюжет и лор · пасхалки · звук · рефакторинг и тесты на других ОС. Всё это идеи, не обещания.
 
 ### Управление
 
 | Клавиша | Действие |
 | --- | --- |
-| `W A S D` | Перемещение корабля |
-| `Space` | Один выстрел; при Rapid Fire — удерживать для автоогня |
+| `W A S D` | Движение корабля |
+| `Space` | Выстрел; при Rapid Fire — удерживать для автоогня |
 | `R` | Перезарядка; после Game Over — новая попытка |
-| `P` | Пауза / продолжить |
+| `P` | Пауза |
 
 ### Запуск (Linux)
 
-Нужны установленный **Rust toolchain** и **Cargo**, а также системные зависимости Bevy для вашей Linux-системы.
+Нужны [Rust](https://rustup.rs) и системные зависимости Bevy. Для Debian/Ubuntu примерно так:
+
+```bash
+sudo apt install g++ pkg-config libx11-dev libasound2-dev libudev-dev libxkbcommon-x11-0 libwayland-dev libxkbcommon-dev
+```
+
+Остальные дистрибутивы: [Bevy: Linux dependencies](https://github.com/bevyengine/bevy/blob/main/docs/linux_dependencies.md).
 
 ```bash
 git clone https://github.com/peqou/Rusteroids.git
 cd Rusteroids
-cargo run
+cargo run --release
 ```
 
-> **Платформы:** разработка и тестирование ведутся на **Linux**. Windows **не тестировалась**; работоспособность там не подтверждена. macOS также не проверялась. Это не означает, что игра принципиально не запустится — просто никто пока не обещает.
+- Запускай из корня репозитория, чтобы игра нашла папку `assets/` (шейдер и рамка кокпита).
+- `--release` важен: в debug Bevy заметно тормозит.
+- Окно сейчас жёстко 1920×1080 и рассчитано на 16:9. На других разрешениях HUD может съехать.
+- Версия Bevy указана в `Cargo.toml`.
 
-### Немного о подходе
+### Про разработку
 
-Здесь есть **vibecoding**, эксперименты, помощь ИИ, ручные правки, переделки и ошибки уровня «почему астероиды внезапно стали невидимыми». Код не претендует на статус эталонной архитектуры. Идеи, решения, тестирование и финальное направление проекта — процесс проб и ошибок, а не производственный конвейер.
+Это **вайбкодинг**: помощь ИИ, ручные правки, переделки и баги вида «почему астероиды стали невидимыми». Код — не образец архитектуры, всё лежит в `main.rs` и `cockpit.rs` и будет разбираться по мере надобности.
 
-Если однажды это станет серьёзной инди-игрой, этот README будет забавным археологическим артефактом. Если нет — зато было весело.
+### Лицензия
+
+[MIT](LICENSE). Берите, форкайте, ломайте, переделывайте под себя — разрешение не нужно, только оставьте упоминание автора.
 
 ---
 
 ## English
 
-### What even is this?
+### What is this
 
-**Rusteroids** is an experimental space arcade shooter built with **Rust + Bevy**, featuring an **ASCII-inspired visual style** and a fictional spacecraft computer interface.
+**Rusteroids** is a personal experiment: a third-person arcade space shooter with ASCII-style post-processing and a fake spaceship-computer cockpit (frame, HUD, oscilloscope).
 
-It started as a simple “what if I tried making a game?” experiment and somehow escalated into “why am I calibrating an oscilloscope inside a fake spaceship dashboard?”. This is **vibe coding for fun, experimentation, and learning Rust** — not a polished commercial production with a five-year business strategy.
+Made **for myself**: to try offline gamedev, learn Rust with AI help, and learn to draw — it's easier to learn when you have an idea of your own. No roadmap, no deadlines. If it ever grows into a small visual novel with its own story, sprites and easter eggs, great. If not, it was still fun.
 
-**However.** There's a non-zero chance it might eventually evolve into a proper, slightly unhinged indie game with its own personality, story, and secrets best left unexplained in a README.
+### What's in
 
-### What's already here ✅
+- Ship flight (**WASD**), camera behind the ship.
+- ASCII-style post-processing, pixel-art cockpit with HUD and oscilloscope.
+- Asteroid waves with different formations, score, lives, pause, game over, restart.
+- Destructible (1–3 HP, bar shows after the first hit) and indestructible asteroids.
+- 12-round magazine, reload, temporary **Rapid Fire** pickup.
+- Explosions and an experimental **target lock** that punishes standing still.
 
-- A flyable 3D spaceship with **WASD** controls and a third-person camera.
-- **ASCII-inspired post-processing** that makes space feel like it is rendered by an old onboard terminal.
-- A pixel-art cockpit overlay, HUD, and an animated **oscilloscope**.
-- Asteroid waves, score, lives, pause, Game Over, and restart.
-- Destructible and indestructible asteroids with irregular low-poly shapes.
-- Destructible asteroids have **1–3 HP**; their segmented health bars become visible **only after taking damage**.
-- Semi-automatic shooting, a **12-shot magazine**, and reloading.
-- A temporary **Rapid Fire** pickup that unlocks automatic shooting.
-- Explosions, basic effects, and an increasingly challenging arcade loop.
-- An experimental target-lock warning system that strongly disapproves of camping in one spot.
+### Ideas for later 🚧
 
-These are **implemented features**, not a claim that everything is bug-free or balanced.
-
-### The questionable master plan 🚧
-
-| Area | Plans (subject to vibes) |
-| --- | --- |
-| **Menus & UX** | Main menu, settings, cleaner pause and game-over screens. |
-| **Art & sprites** | Original pixel / ASCII art, more distinctive ships, asteroids, enemies, and effects. |
-| **Gameplay** | More enemy types, smarter behavior, bosses, extra power-ups, and less chaotic balancing. |
-| **Story & lore** | Build a world where the onboard computer's weirdness actually means something. No story spoilers yet. |
-| **Easter eggs & memes** | Hidden jokes, weird terminal messages, references, and secrets nobody was supposed to notice that fast. |
-| **ARG** | Maybe encrypted clues, fake logs, hidden connections, and an alternate-reality mystery. **Concept only, not implemented.** |
-| **Audio** | Music, SFX, system alerts, and retro-electronic ambience. |
-| **Tech** | Refactoring, performance work, graphics settings, saving, cleaner architecture, and cross-platform testing. |
-| **Meaning / moral** | Perhaps hide something genuinely human underneath all the nonsense, without making it a lecture. |
-
-**None of these are promises.** This is a hobby project, not a funded production schedule.
+Menus and settings · own sprites and ASCII art · new enemies and bosses · story and lore · easter eggs · audio · refactoring and testing on other OSes. Ideas only, not promises.
 
 ### Controls
 
 | Key | Action |
 | --- | --- |
 | `W A S D` | Move the ship |
-| `Space` | Single shot; hold during Rapid Fire for automatic fire |
+| `Space` | Shoot; hold during Rapid Fire for auto-fire |
 | `R` | Reload; restart after Game Over |
-| `P` | Pause / resume |
+| `P` | Pause |
 
-### Running it (Linux)
+### Running (Linux)
 
-You'll need the **Rust toolchain**, **Cargo**, and the Linux system dependencies required by Bevy.
+You need [Rust](https://rustup.rs) and Bevy's system dependencies. On Debian/Ubuntu roughly:
+
+```bash
+sudo apt install g++ pkg-config libx11-dev libasound2-dev libudev-dev libxkbcommon-x11-0 libwayland-dev libxkbcommon-dev
+```
+
+Other distros: [Bevy: Linux dependencies](https://github.com/bevyengine/bevy/blob/main/docs/linux_dependencies.md).
 
 ```bash
 git clone https://github.com/peqou/Rusteroids.git
 cd Rusteroids
-cargo run
+cargo run --release
 ```
 
-> **Platform status:** Built and tested on **Linux only** so far. **Windows is untested**, and compatibility is not guaranteed. macOS is also untested. It might work; it might summon a compiler error. Science requires experiments.
+- Run from the repo root so the game finds the `assets/` folder (shader and cockpit frame).
+- Use `--release`: Bevy is noticeably slow in debug.
+- The window is currently hardcoded to 1920×1080 and designed for 16:9; the HUD may misalign at other resolutions.
+- The Bevy version is pinned in `Cargo.toml`.
 
-### About the development process
+### About development
 
-This project involves **vibe coding**, AI-assisted experimentation, manual edits, rewrites, and bugs of the “why did the asteroids become invisible?” variety. The code is **not** presented as a best-practices showcase. The design and direction are evolving through experimentation.
+This is **vibe coding**: AI assistance, manual edits, rewrites, and bugs of the "why did the asteroids go invisible" kind. The code is not a best-practices showcase; everything lives in `main.rs` and `cockpit.rs` and will be cleaned up when needed.
 
-If Rusteroids ever becomes a serious indie release, this README will be a hilarious historical document. If it doesn't, at least we had fun.
+### License
+
+[MIT](LICENSE). Take it, fork it, break it, remake it — no permission needed, just keep the copyright notice.
 
 ---
 
-**Status:** `very early WIP` · **Engine:** `Bevy` · **Language:** `Rust` · **Tested on:** `Linux` · **Stability:** `¯\_(ツ)_/¯`
-
-*Made for the plot. The plot is still being written.*
+**Status:** very early WIP · **Engine:** Bevy · **Language:** Rust · **Tested on:** Linux
